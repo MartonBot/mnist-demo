@@ -1,7 +1,7 @@
-﻿using MathNet.Numerics.LinearAlgebra;
-using Mat = MathNet.Numerics.LinearAlgebra.Matrix<int>;
-using Vec = MathNet.Numerics.LinearAlgebra.Vector<int>;
-using System;
+﻿using System;
+using MathNet.Numerics.LinearAlgebra;
+using Mat = MathNet.Numerics.LinearAlgebra.Matrix<float>;
+using Vec = MathNet.Numerics.LinearAlgebra.Vector<float>;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -12,9 +12,9 @@ namespace Models.MnistDigits
 {
     public class MnistDataset
     {
-        private static MatrixBuilder<int> _M = Mat.Build;
-        private static VectorBuilder<int> _V = Vec.Build;
-        private static Func<string, int> Int = (x) => int.Parse(x);
+        private static MatrixBuilder<float> _M = Mat.Build;
+        private static VectorBuilder<float> _V = Vec.Build;
+        private static Func<string, float> ToFloat = (x) => float.Parse(x);
 
         public Mat Features
         {
@@ -64,13 +64,13 @@ namespace Models.MnistDigits
         public MnistDataset(string csvFilePath)
         {
             
-            var lines = new List<int[]>();
+            var lines = new List<float[]>();
 
             using (var sr = new StreamReader(csvFilePath))
             {
                 while (!sr.EndOfStream)
                 {
-                    lines.Add(sr.ReadLine().Split(',').Select(Int).ToArray());
+                    lines.Add(sr.ReadLine().Split(',').Select(ToFloat).ToArray());
                 }
             }
 
@@ -92,6 +92,14 @@ namespace Models.MnistDigits
             set
             {
                 Features.SetRow(rowIndex, value);
+            }
+        }
+
+        public float[][] Samples
+        {
+            get
+            {
+                return _data.ToRowArrays();
             }
         }
 

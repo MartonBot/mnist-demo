@@ -39,12 +39,8 @@ namespace MnistDigits
 
         private void openCsvButton_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void openFileDialog1_FileOk(object sender, CancelEventArgs e)
-        {
-            if (openCsvFileDialog.ShowDialog() == DialogResult.OK)
+            DialogResult dialogResult = openCsvFileDialog.ShowDialog();
+            if (dialogResult == DialogResult.OK)
             {
                 try
                 {
@@ -55,9 +51,16 @@ namespace MnistDigits
                     datasetValidationLabel.Text = "Failed to load dataset";
                     return;
                 }
+
                 datasetValidationLabel.Text = "Dataset loaded successfully";
 
+                samplesListBox.DataSource = _dataset.Samples;
             }
+        }
+
+        private void openCsvFileDialog_FileOk(object sender, CancelEventArgs e)
+        {
+            
         }
 
     }

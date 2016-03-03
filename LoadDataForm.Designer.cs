@@ -33,7 +33,7 @@
             this.datasetValidationLabel = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.openCsvButton = new System.Windows.Forms.Button();
-            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.samplesListBox = new System.Windows.Forms.ListBox();
             this.digitPictureBox = new System.Windows.Forms.PictureBox();
             this.openCsvFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.groupBox1.SuspendLayout();
@@ -65,7 +65,7 @@
             this.splitContainer1.Panel1.Controls.Add(this.datasetValidationLabel);
             this.splitContainer1.Panel1.Controls.Add(this.label1);
             this.splitContainer1.Panel1.Controls.Add(this.openCsvButton);
-            this.splitContainer1.Panel1.Controls.Add(this.listBox1);
+            this.splitContainer1.Panel1.Controls.Add(this.samplesListBox);
             // 
             // splitContainer1.Panel2
             // 
@@ -103,14 +103,14 @@
             this.openCsvButton.UseVisualStyleBackColor = true;
             this.openCsvButton.Click += new System.EventHandler(this.openCsvButton_Click);
             // 
-            // listBox1
+            // samplesListBox
             // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(3, 53);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(282, 329);
-            this.listBox1.TabIndex = 0;
-            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
+            this.samplesListBox.FormattingEnabled = true;
+            this.samplesListBox.Location = new System.Drawing.Point(3, 53);
+            this.samplesListBox.Name = "samplesListBox";
+            this.samplesListBox.Size = new System.Drawing.Size(282, 329);
+            this.samplesListBox.TabIndex = 0;
+            this.samplesListBox.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
             // digitPictureBox
             // 
@@ -124,7 +124,7 @@
             // openCsvFileDialog
             // 
             this.openCsvFileDialog.FileName = "Open CSV File Dialog";
-            this.openCsvFileDialog.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialog1_FileOk);
+            this.openCsvFileDialog.FileOk += new System.ComponentModel.CancelEventHandler(this.openCsvFileDialog_FileOk);
             // 
             // LoadDataForm
             // 
@@ -149,7 +149,7 @@
 
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.SplitContainer splitContainer1;
-        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.ListBox samplesListBox;
         private System.Windows.Forms.OpenFileDialog openCsvFileDialog;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button openCsvButton;

@@ -51,6 +51,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ArrayExtensions.cs" />
     <Compile Include="Models\MnistDataset.cs" />
     <Compile Include="LoadDataForm.cs">
       <SubType>Form</SubType>
