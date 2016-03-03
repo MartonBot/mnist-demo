@@ -22,9 +22,11 @@ namespace MnistDigits
             openCsvFileDialog.Filter = "CSV Files (*.csv)|*.csv|All Files (*.*)|*.*";
         }
 
-        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        private void samplesListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            float[] array = (float[])samplesListBox.SelectedValue;
+            digitPictureBox.Image = array.ToBitmap();
+            
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -32,7 +34,7 @@ namespace MnistDigits
 
         }
 
-        private void pictureBox1_Click(object sender, EventArgs e)
+        private void digitPictureBox_Click(object sender, EventArgs e)
         {
 
         }

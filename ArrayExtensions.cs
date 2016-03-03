@@ -10,12 +10,12 @@ namespace MnistDigits
     internal static class ArrayExtensions
     {
 
-        private static int width = 20;
-        private static int height = 20;
+        private static int width = 28;
+        private static int height = 28;
 
         private static int bpp = 8; //  grayscale
 
-        internal static Bitmap ToBitmap(this float[] array, int a)
+        internal static Bitmap ToBitmap(this float[] array)
         {
             Bitmap bmp = new Bitmap(width, height);
 
@@ -26,14 +26,19 @@ namespace MnistDigits
                     int i = ((y * width) + x);
                     if (bpp == 8) // grayscale
                     {
-                        int level = (int) array[i];
+                        int level = (int) array[i+1]; // taking the first element (the label) into account
                         Color color = Color.FromArgb(level, level, level);
                         bmp.SetPixel(x, y, color);
                     }
 
                 }
             }
-            return null;
+            return bmp;
+        }
+
+        internal static string Label(this float[] array)
+        {
+            return string.Format("{0}", (int) array[0]);
         }
 
     }

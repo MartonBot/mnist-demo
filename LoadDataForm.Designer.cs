@@ -110,7 +110,7 @@
             this.samplesListBox.Name = "samplesListBox";
             this.samplesListBox.Size = new System.Drawing.Size(282, 329);
             this.samplesListBox.TabIndex = 0;
-            this.samplesListBox.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
+            this.samplesListBox.SelectedIndexChanged += new System.EventHandler(this.samplesListBox_SelectedIndexChanged);
             // 
             // digitPictureBox
             // 
@@ -119,7 +119,7 @@
             this.digitPictureBox.Size = new System.Drawing.Size(159, 164);
             this.digitPictureBox.TabIndex = 0;
             this.digitPictureBox.TabStop = false;
-            this.digitPictureBox.Click += new System.EventHandler(this.pictureBox1_Click);
+            this.digitPictureBox.Click += new System.EventHandler(this.digitPictureBox_Click);
             // 
             // openCsvFileDialog
             // 
