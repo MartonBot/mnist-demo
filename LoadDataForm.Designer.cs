@@ -114,9 +114,9 @@
             // 
             // digitPictureBox
             // 
-            this.digitPictureBox.Location = new System.Drawing.Point(141, 71);
+            this.digitPictureBox.Location = new System.Drawing.Point(3, 3);
             this.digitPictureBox.Name = "digitPictureBox";
-            this.digitPictureBox.Size = new System.Drawing.Size(159, 164);
+            this.digitPictureBox.Size = new System.Drawing.Size(28, 28);
             this.digitPictureBox.TabIndex = 0;
             this.digitPictureBox.TabStop = false;
             this.digitPictureBox.Click += new System.EventHandler(this.digitPictureBox_Click);

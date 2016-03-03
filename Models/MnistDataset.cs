@@ -7,6 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MnistDigits.Models;
 
 namespace Models.MnistDigits
 {
@@ -15,6 +16,7 @@ namespace Models.MnistDigits
         private static MatrixBuilder<float> _M = Mat.Build;
         private static VectorBuilder<float> _V = Vec.Build;
         private static Func<string, float> ToFloat = (x) => float.Parse(x);
+        private static Func<float, int> ToInt = (x) => (int)x;
 
         public Mat Features
         {
@@ -95,11 +97,11 @@ namespace Models.MnistDigits
             }
         }
 
-        public float[][] Samples
+        public List<MnistSample> Samples
         {
             get
             {
-                return _data.ToRowArrays();
+                return _data.ToRowArrays().Select(x => new MnistSample(x)).ToList();
             }
         }
 

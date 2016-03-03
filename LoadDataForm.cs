@@ -1,4 +1,5 @@
-﻿using Models.MnistDigits;
+﻿using MnistDigits.Models;
+using Models.MnistDigits;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -20,12 +21,13 @@ namespace MnistDigits
         {
             InitializeComponent();
             openCsvFileDialog.Filter = "CSV Files (*.csv)|*.csv|All Files (*.*)|*.*";
+            samplesListBox.DisplayMember = nameof(MnistSample.Label);
         }
 
         private void samplesListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            float[] array = (float[])samplesListBox.SelectedValue;
-            digitPictureBox.Image = array.ToBitmap();
+            MnistSample sample = (MnistSample)samplesListBox.SelectedValue;
+            digitPictureBox.Image = sample.Bitmap;
             
         }
 
