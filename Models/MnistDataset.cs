@@ -2,6 +2,8 @@
 using MathNet.Numerics.LinearAlgebra;
 using Mat = MathNet.Numerics.LinearAlgebra.Matrix<float>;
 using Vec = MathNet.Numerics.LinearAlgebra.Vector<float>;
+using Mb = MathNet.Numerics.LinearAlgebra.MatrixBuilder<float>;
+using Vb = MathNet.Numerics.LinearAlgebra.VectorBuilder<float>;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -13,8 +15,8 @@ namespace Models.MnistDigits
 {
     public class MnistDataset
     {
-        private static MatrixBuilder<float> _M = Mat.Build;
-        private static VectorBuilder<float> _V = Vec.Build;
+        private static Mb _M = Mat.Build;
+        private static Vb _V = Vec.Build;
         private static Func<string, float> ToFloat = (x) => float.Parse(x);
         private static Func<float, int> ToInt = (x) => (int)x;
 

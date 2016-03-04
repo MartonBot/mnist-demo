@@ -36,6 +36,8 @@
             this.samplesListBox = new System.Windows.Forms.ListBox();
             this.digitPictureBox = new System.Windows.Forms.PictureBox();
             this.openCsvFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.featuresTextBox = new System.Windows.Forms.TextBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -49,7 +51,7 @@
             this.groupBox1.Controls.Add(this.splitContainer1);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(872, 404);
+            this.groupBox1.Size = new System.Drawing.Size(1208, 493);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Loading and Visualising the Dataset";
@@ -69,9 +71,11 @@
             // 
             // splitContainer1.Panel2
             // 
+            this.splitContainer1.Panel2.Controls.Add(this.textBox1);
+            this.splitContainer1.Panel2.Controls.Add(this.featuresTextBox);
             this.splitContainer1.Panel2.Controls.Add(this.digitPictureBox);
-            this.splitContainer1.Size = new System.Drawing.Size(866, 385);
-            this.splitContainer1.SplitterDistance = 288;
+            this.splitContainer1.Size = new System.Drawing.Size(1202, 474);
+            this.splitContainer1.SplitterDistance = 184;
             this.splitContainer1.TabIndex = 0;
             // 
             // datasetValidationLabel
@@ -108,15 +112,15 @@
             this.samplesListBox.FormattingEnabled = true;
             this.samplesListBox.Location = new System.Drawing.Point(3, 53);
             this.samplesListBox.Name = "samplesListBox";
-            this.samplesListBox.Size = new System.Drawing.Size(282, 329);
+            this.samplesListBox.Size = new System.Drawing.Size(178, 420);
             this.samplesListBox.TabIndex = 0;
             this.samplesListBox.SelectedIndexChanged += new System.EventHandler(this.samplesListBox_SelectedIndexChanged);
             // 
             // digitPictureBox
             // 
-            this.digitPictureBox.Location = new System.Drawing.Point(3, 3);
+            this.digitPictureBox.Location = new System.Drawing.Point(3, 303);
             this.digitPictureBox.Name = "digitPictureBox";
-            this.digitPictureBox.Size = new System.Drawing.Size(28, 28);
+            this.digitPictureBox.Size = new System.Drawing.Size(168, 168);
             this.digitPictureBox.TabIndex = 0;
             this.digitPictureBox.TabStop = false;
             this.digitPictureBox.Click += new System.EventHandler(this.digitPictureBox_Click);
@@ -126,11 +130,30 @@
             this.openCsvFileDialog.FileName = "Open CSV File Dialog";
             this.openCsvFileDialog.FileOk += new System.ComponentModel.CancelEventHandler(this.openCsvFileDialog_FileOk);
             // 
+            // featuresTextBox
+            // 
+            this.featuresTextBox.Location = new System.Drawing.Point(177, 303);
+            this.featuresTextBox.Multiline = true;
+            this.featuresTextBox.Name = "featuresTextBox";
+            this.featuresTextBox.ReadOnly = true;
+            this.featuresTextBox.Size = new System.Drawing.Size(834, 168);
+            this.featuresTextBox.TabIndex = 2;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(279, 53);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
+            this.textBox1.Size = new System.Drawing.Size(383, 193);
+            this.textBox1.TabIndex = 3;
+            this.textBox1.Text = "Datasets definitions TBW";
+            // 
             // LoadDataForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1130, 524);
+            this.ClientSize = new System.Drawing.Size(1232, 517);
             this.Controls.Add(this.groupBox1);
             this.Name = "LoadDataForm";
             this.Text = "LoadDataForm";
@@ -138,6 +161,7 @@
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel1.PerformLayout();
             this.splitContainer1.Panel2.ResumeLayout(false);
+            this.splitContainer1.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.digitPictureBox)).EndInit();
@@ -155,5 +179,7 @@
         private System.Windows.Forms.Button openCsvButton;
         private System.Windows.Forms.Label datasetValidationLabel;
         private System.Windows.Forms.PictureBox digitPictureBox;
+        private System.Windows.Forms.TextBox featuresTextBox;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }

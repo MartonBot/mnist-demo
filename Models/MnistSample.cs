@@ -73,6 +73,14 @@ namespace MnistDigits.Models
             }
         }
 
+        public string FeaturesString
+        {
+            get
+            {
+                return string.Join(" ", _features);
+            }
+        }
+
         private Bitmap ToBitmap()
         {
             if (_features.Length != width * height)
@@ -98,5 +106,6 @@ namespace MnistDigits.Models
             }
             return bmp;
         }
+
     }
 }

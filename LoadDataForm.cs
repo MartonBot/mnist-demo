@@ -27,8 +27,8 @@ namespace MnistDigits
         private void samplesListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             MnistSample sample = (MnistSample)samplesListBox.SelectedValue;
-            digitPictureBox.Image = sample.Bitmap;
-            
+            digitPictureBox.Image = new Bitmap(sample.Bitmap, digitPictureBox.Size);
+            featuresTextBox.Text = sample.FeaturesString;
         }
 
         private void label1_Click(object sender, EventArgs e)
