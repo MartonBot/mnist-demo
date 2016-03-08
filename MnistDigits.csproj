@@ -51,6 +51,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\Layer.cs" />
     <Compile Include="Models\MnistDataset.cs" />
     <Compile Include="LoadDataForm.cs">
       <SubType>Form</SubType>
@@ -65,6 +66,7 @@
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\MnistSample.cs" />
+    <Compile Include="Models\NeuralNetwork.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="LoadDataForm.resx">
