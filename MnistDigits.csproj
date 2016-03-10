@@ -51,7 +51,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Util\VectorExtensions.cs" />
     <Compile Include="Models\Layer.cs" />
+    <Compile Include="Models\LogisticRegressionModel.cs" />
     <Compile Include="Models\MnistDataset.cs" />
     <Compile Include="LoadDataForm.cs">
       <SubType>Form</SubType>
@@ -84,7 +86,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

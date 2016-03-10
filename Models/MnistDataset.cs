@@ -1,9 +1,9 @@
 ﻿using System;
 using MathNet.Numerics.LinearAlgebra;
-using Mat = MathNet.Numerics.LinearAlgebra.Matrix<float>;
-using Vec = MathNet.Numerics.LinearAlgebra.Vector<float>;
-using Mb = MathNet.Numerics.LinearAlgebra.MatrixBuilder<float>;
-using Vb = MathNet.Numerics.LinearAlgebra.VectorBuilder<float>;
+using Mat = MathNet.Numerics.LinearAlgebra.Matrix<double>;
+using Vec = MathNet.Numerics.LinearAlgebra.Vector<double>;
+using Mb = MathNet.Numerics.LinearAlgebra.MatrixBuilder<double>;
+using Vb = MathNet.Numerics.LinearAlgebra.VectorBuilder<double>;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -17,14 +17,21 @@ namespace Models.MnistDigits
     {
         private static Mb _M = Mat.Build;
         private static Vb _V = Vec.Build;
-        private static Func<string, float> ToFloat = (x) => float.Parse(x);
-        private static Func<float, int> ToInt = (x) => (int)x;
+        private static Func<string, double> ToFloat = (x) => double.Parse(x);
+        private static Func<double, int> ToInt = (x) => (int)x;
+
+        private Mat _data;
+
+        /// <summary>
+        /// Returns a matrix containing the samples in rows and the target values in the first column
+        /// </summary>
+        public Mat Data { get { return _data; } }
 
         public Mat Features
         {
             get
             {
-                return _data.SubMatrix(0, M, 1, N);
+                return _data.SubMatrix(0, M, 1, N).InsertColumn(1, BiasColumn);
             }
         }
 
@@ -58,17 +65,10 @@ namespace Models.MnistDigits
             }
         }
 
-        private Mat _data;
-
-        /// <summary>
-        /// Returns a matrix containing the samples in rows and the target values in the first column
-        /// </summary>
-        public Mat Data { get { return _data; } }
-
         public MnistDataset(string csvFilePath)
         {
             
-            var lines = new List<float[]>();
+            var lines = new List<double[]>();
 
             using (var sr = new StreamReader(csvFilePath))
             {
@@ -104,6 +104,14 @@ namespace Models.MnistDigits
             get
             {
                 return _data.ToRowArrays().Select(x => new MnistSample(x)).ToList();
+            }
+        }
+
+        private Vec BiasColumn
+        {
+            get
+            {
+                return _V.Dense(_data.RowCount, 1);
             }
         }
 

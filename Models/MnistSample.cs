@@ -18,15 +18,15 @@ namespace MnistDigits.Models
         private int _label;
         private Bitmap _bitmap = null;
 
-        public MnistSample(float[] array)
+        public MnistSample(double[] array)
         {
             if (array.Length != width * height + 1)
             {
                 string message = string.Format("The array of float provided is not the right size ({0}x{1}+1) for an MNIST sample", width, height);
                 throw new ArgumentException(message, nameof(array));
             }
-            
-            float[] temp = new float[width * height];
+
+            double[] temp = new double[width * height];
             Array.Copy(array, 1, temp, 0, temp.Length);
 
             _label = (int)array[0];

@@ -1,4 +1,5 @@
 ﻿using System;
+using Mat = MathNet.Numerics.LinearAlgebra.Matrix<double>;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,9 @@ namespace MnistDigits.Models
 {
     public class NeuralNetwork
     {
-        private List<Layer> _layers;
+        private Layer[] _layers;
+
+        public Layer[] Layers { get; }
+
     }
 }
