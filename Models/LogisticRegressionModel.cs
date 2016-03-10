@@ -18,7 +18,7 @@ namespace MnistDigits.Models
         private Mat _X;
         private Vec _Y;
         private Vec _theta;
-        private double _alpha;
+        private double _alpha = 1;
 
         public Vec Theta {
             get

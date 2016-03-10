@@ -1,4 +1,6 @@
-﻿namespace MnistDigits
+﻿using OxyPlot.WindowsForms;
+
+namespace MnistDigits
 {
     partial class LoadDataForm
     {
@@ -34,10 +36,12 @@
             this.label1 = new System.Windows.Forms.Label();
             this.openCsvButton = new System.Windows.Forms.Button();
             this.samplesListBox = new System.Windows.Forms.ListBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.featuresTextBox = new System.Windows.Forms.TextBox();
             this.digitPictureBox = new System.Windows.Forms.PictureBox();
             this.openCsvFileDialog = new System.Windows.Forms.OpenFileDialog();
-            this.featuresTextBox = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.logisticRegressionButton = new System.Windows.Forms.Button();
+            this.neuralNetworkButton = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -71,6 +75,8 @@
             // 
             // splitContainer1.Panel2
             // 
+            this.splitContainer1.Panel2.Controls.Add(this.neuralNetworkButton);
+            this.splitContainer1.Panel2.Controls.Add(this.logisticRegressionButton);
             this.splitContainer1.Panel2.Controls.Add(this.textBox1);
             this.splitContainer1.Panel2.Controls.Add(this.featuresTextBox);
             this.splitContainer1.Panel2.Controls.Add(this.digitPictureBox);
@@ -116,6 +122,25 @@
             this.samplesListBox.TabIndex = 0;
             this.samplesListBox.SelectedIndexChanged += new System.EventHandler(this.samplesListBox_SelectedIndexChanged);
             // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(279, 53);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
+            this.textBox1.Size = new System.Drawing.Size(383, 193);
+            this.textBox1.TabIndex = 3;
+            this.textBox1.Text = "Datasets definitions TBW";
+            // 
+            // featuresTextBox
+            // 
+            this.featuresTextBox.Location = new System.Drawing.Point(177, 303);
+            this.featuresTextBox.Multiline = true;
+            this.featuresTextBox.Name = "featuresTextBox";
+            this.featuresTextBox.ReadOnly = true;
+            this.featuresTextBox.Size = new System.Drawing.Size(834, 168);
+            this.featuresTextBox.TabIndex = 2;
+            // 
             // digitPictureBox
             // 
             this.digitPictureBox.Location = new System.Drawing.Point(3, 303);
@@ -130,24 +155,24 @@
             this.openCsvFileDialog.FileName = "Open CSV File Dialog";
             this.openCsvFileDialog.FileOk += new System.ComponentModel.CancelEventHandler(this.openCsvFileDialog_FileOk);
             // 
-            // featuresTextBox
+            // logisticRegressionButton
             // 
-            this.featuresTextBox.Location = new System.Drawing.Point(177, 303);
-            this.featuresTextBox.Multiline = true;
-            this.featuresTextBox.Name = "featuresTextBox";
-            this.featuresTextBox.ReadOnly = true;
-            this.featuresTextBox.Size = new System.Drawing.Size(834, 168);
-            this.featuresTextBox.TabIndex = 2;
+            this.logisticRegressionButton.Location = new System.Drawing.Point(833, 208);
+            this.logisticRegressionButton.Name = "logisticRegressionButton";
+            this.logisticRegressionButton.Size = new System.Drawing.Size(128, 23);
+            this.logisticRegressionButton.TabIndex = 4;
+            this.logisticRegressionButton.Text = "Logistic Regression";
+            this.logisticRegressionButton.UseVisualStyleBackColor = true;
+            this.logisticRegressionButton.Click += new System.EventHandler(this.logisticRegressionButton_Click);
             // 
-            // textBox1
+            // neuralNetworkButton
             // 
-            this.textBox1.Location = new System.Drawing.Point(279, 53);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(383, 193);
-            this.textBox1.TabIndex = 3;
-            this.textBox1.Text = "Datasets definitions TBW";
+            this.neuralNetworkButton.Location = new System.Drawing.Point(833, 246);
+            this.neuralNetworkButton.Name = "neuralNetworkButton";
+            this.neuralNetworkButton.Size = new System.Drawing.Size(128, 23);
+            this.neuralNetworkButton.TabIndex = 5;
+            this.neuralNetworkButton.Text = "NeuralNetwork";
+            this.neuralNetworkButton.UseVisualStyleBackColor = true;
             // 
             // LoadDataForm
             // 
@@ -181,5 +206,9 @@
         private System.Windows.Forms.PictureBox digitPictureBox;
         private System.Windows.Forms.TextBox featuresTextBox;
         private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button logisticRegressionButton;
+        private System.Windows.Forms.Button neuralNetworkButton;
+
     }
+        
 }

@@ -67,5 +67,12 @@ namespace MnistDigits
             
         }
 
+        private void logisticRegressionButton_Click(object sender, EventArgs e)
+        {
+            var logisticRegressionForm = new LogisticRegressionForm(_dataset);
+            logisticRegressionForm.Tag = this;
+            logisticRegressionForm.Show(this);
+            Hide();
+        }
     }
 }
