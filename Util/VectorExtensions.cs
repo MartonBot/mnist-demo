@@ -10,7 +10,7 @@ namespace MnistDigits.Util
     public static class VectorExtensions
     {
 
-        private static Func<double, double> _sigmoid = t => (1 / (1 + Math.Exp(-t)));
+        private static Func<double, double> _sigmoid = t => (1.0 / (1.0 + Math.Exp(-t)));
 
         public static Vec Log(this Vec v)
         {

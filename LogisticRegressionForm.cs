@@ -25,13 +25,13 @@ namespace MnistDigits
         {
             InitializeComponent();
             _dataset = dataset;
-            _model = new LogisticRegressionModel(_dataset);
+            _model = new LogisticRegressionModel(_dataset, 1);
             _gradientDescentSeries = new GradientDescentSeries(_model.Cost());
 
             //
             var myModel = new PlotModel { Title = "Cost" };
             LineSeries s = new LineSeries();
-            s.ItemsSource = new GradientDescentSeries(8).Points;
+            s.ItemsSource = _gradientDescentSeries.Points;
             myModel.Series.Add(s);
 
             gradientDescentPlotView.Model = myModel;
@@ -57,6 +57,11 @@ namespace MnistDigits
             _model.GradientDescentStep();
             _gradientDescentSeries.Add(_model.Cost());
             gradientDescentPlotView.InvalidatePlot(true);
+        }
+
+        private void alphaTextBox_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

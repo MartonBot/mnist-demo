@@ -38,7 +38,7 @@ namespace MnistDigits
             this.stepButton = new System.Windows.Forms.Button();
             this.resetButton = new System.Windows.Forms.Button();
             this.rateLabel = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.alphaTextBox = new System.Windows.Forms.TextBox();
             this.gradientDescentPlotView = new OxyPlot.WindowsForms.PlotView();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -52,7 +52,7 @@ namespace MnistDigits
             this.groupBox1.Controls.Add(this.stepButton);
             this.groupBox1.Controls.Add(this.resetButton);
             this.groupBox1.Controls.Add(this.rateLabel);
-            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.alphaTextBox);
             this.groupBox1.Controls.Add(this.gradientDescentPlotView);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
@@ -126,10 +126,11 @@ namespace MnistDigits
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(63, 30);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 0;
+            this.alphaTextBox.Location = new System.Drawing.Point(63, 30);
+            this.alphaTextBox.Name = "textBox1";
+            this.alphaTextBox.Size = new System.Drawing.Size(100, 20);
+            this.alphaTextBox.TabIndex = 0;
+            this.alphaTextBox.TextChanged += new System.EventHandler(this.alphaTextBox_TextChanged);
             // 
             // gradientDescentPlotView
             // 
@@ -163,7 +164,7 @@ namespace MnistDigits
 
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label rateLabel;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox alphaTextBox;
         private System.Windows.Forms.Button resetButton;
         private System.Windows.Forms.Button runButton;
         private System.Windows.Forms.Label label3;

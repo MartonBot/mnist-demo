@@ -17,7 +17,7 @@ namespace Models.MnistDigits
     {
         private static Mb _M = Mat.Build;
         private static Vb _V = Vec.Build;
-        private static Func<string, double> ToFloat = (x) => double.Parse(x);
+        private static Func<string, double> ToDouble = (x) => double.Parse(x);
         private static Func<double, int> ToInt = (x) => (int)x;
 
         private Mat _data;
@@ -27,21 +27,44 @@ namespace Models.MnistDigits
         /// </summary>
         public Mat Data { get { return _data; } }
 
+        public Mat FeaturesWithBias
+        {
+            get
+            {
+                return (_data.SubMatrix(0, M, 1, N) / 255.0).InsertColumn(0, BiasColumn);
+            }
+        }
+
         public Mat Features
         {
             get
             {
-                return _data.SubMatrix(0, M, 1, N).InsertColumn(1, BiasColumn);
+                return (_data.SubMatrix(0, M, 1, N) / 255.0);
             }
         }
 
-        public Vec Target
+        public Vec IntTarget
         {
             get
             {
                 return _data.Column(0);
             }
         }
+
+        public Mat DigitsTarget {
+            get
+            {
+                var intTarget = IntTarget;
+                Vec[] targetVectors = new Vec[10];
+                for (int i = 0; i < 10; i++)
+                {
+                    targetVectors[i] = IntTarget.Map(x => (int)x == i ? 1.0 : 0.0);
+                }
+                return _M.DenseOfColumnVectors(targetVectors);
+            }
+            
+        }
+
 
         /// <summary>
         /// The number of samples
@@ -74,12 +97,11 @@ namespace Models.MnistDigits
             {
                 while (!sr.EndOfStream)
                 {
-                    lines.Add(sr.ReadLine().Split(',').Select(ToFloat).ToArray());
+                    lines.Add(sr.ReadLine().Split(',').Select(ToDouble).ToArray());
                 }
             }
 
             _data = Mat.Build.DenseOfRowArrays(lines.ToArray());
-
         }
 
         /// <summary>
@@ -103,7 +125,7 @@ namespace Models.MnistDigits
         {
             get
             {
-                return _data.ToRowArrays().Select(x => new MnistSample(x)).ToList();
+                return _data.EnumerateRows().Select(x => new MnistSample(x)).ToList();
             }
         }
 
@@ -111,7 +133,7 @@ namespace Models.MnistDigits
         {
             get
             {
-                return _V.Dense(_data.RowCount, 1);
+                return _V.Dense(_data.RowCount, 1.0);
             }
         }
 

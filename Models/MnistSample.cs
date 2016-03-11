@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Vec = MathNet.Numerics.LinearAlgebra.Vector<double>;
 
 namespace MnistDigits.Models
 {
@@ -14,35 +15,22 @@ namespace MnistDigits.Models
         private static int height = 28;
         private static int bpp = 8; //  grayscale
 
-        private int[] _features;
+        private Vec _intFeatures;
         private int _label;
         private Bitmap _bitmap = null;
 
-        public MnistSample(double[] array)
+        public MnistSample(Vec row)
         {
-            if (array.Length != width * height + 1)
+            if (row.Count != width * height + 1)
             {
-                string message = string.Format("The array of float provided is not the right size ({0}x{1}+1) for an MNIST sample", width, height);
-                throw new ArgumentException(message, nameof(array));
+                string message = string.Format("The vector provided is not the right size ({0}x{1}+1) for an MNIST sample", width, height);
+                throw new ArgumentException(message, nameof(row));
             }
 
-            double[] temp = new double[width * height];
-            Array.Copy(array, 1, temp, 0, temp.Length);
+            _label = (int)row[0];
 
-            _label = (int)array[0];
-            _features = temp.Select(x => (int)x).ToArray();
+            _intFeatures = row.SubVector(1, row.Count - 1);
 
-        }
-
-        public MnistSample(int[] features, int label)
-        {
-            if (features.Length != width * height)
-            {
-                string message = string.Format("The array of int provided is not the right size ({0}x{1}) for an MNIST sample", width, height);
-                throw new ArgumentException(message, nameof(features));
-            }
-            _features = features;
-            _label = label;
         }
 
         public string Label
@@ -53,11 +41,11 @@ namespace MnistDigits.Models
             }
         }
 
-        public int[] Features
+        public Vec Features
         {
             get
             {
-                return _features;
+                return _intFeatures;
             }
         }
 
@@ -77,13 +65,13 @@ namespace MnistDigits.Models
         {
             get
             {
-                return string.Join(" ", _features);
+                return string.Join(" ", _intFeatures);
             }
         }
 
         private Bitmap ToBitmap()
         {
-            if (_features.Length != width * height)
+            if (_intFeatures.Count != width * height)
             {
                 string message = string.Format("This sample doesn't have the right number of features ({0}x{1}) to represent an MNIST image", width, height);
                 throw new InvalidOperationException(message);
@@ -97,7 +85,7 @@ namespace MnistDigits.Models
                     int i = ((y * width) + x);
                     if (bpp == 8) // grayscale
                     {
-                        int level = (int)_features[i];
+                        int level = (int)_intFeatures[i];
                         Color color = Color.FromArgb(level, level, level);
                         bmp.SetPixel(x, y, color);
                     }
