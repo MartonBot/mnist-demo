@@ -21,7 +21,7 @@ namespace MnistDigits
         {
             InitializeComponent();
             openCsvFileDialog.Filter = "CSV Files (*.csv)|*.csv|All Files (*.*)|*.*";
-            samplesListBox.DisplayMember = nameof(MnistSample.Label);
+            samplesListBox.DisplayMember = nameof(MnistSample.Target);
         }
 
         private void samplesListBox_SelectedIndexChanged(object sender, EventArgs e)

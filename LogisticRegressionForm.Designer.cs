@@ -40,11 +40,17 @@ namespace MnistDigits
             this.rateLabel = new System.Windows.Forms.Label();
             this.alphaTextBox = new System.Windows.Forms.TextBox();
             this.gradientDescentPlotView = new OxyPlot.WindowsForms.PlotView();
+            this.predictButton = new System.Windows.Forms.Button();
+            this.predictionResultsListBox = new System.Windows.Forms.ListBox();
+            this.predictionsOutcomelabel = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.predictionsOutcomelabel);
+            this.groupBox1.Controls.Add(this.predictionResultsListBox);
+            this.groupBox1.Controls.Add(this.predictButton);
             this.groupBox1.Controls.Add(this.runButton);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.textBox2);
@@ -114,6 +120,7 @@ namespace MnistDigits
             this.resetButton.TabIndex = 2;
             this.resetButton.Text = "Reset Theta";
             this.resetButton.UseVisualStyleBackColor = true;
+            this.resetButton.Click += new System.EventHandler(this.resetButton_Click);
             // 
             // rateLabel
             // 
@@ -124,32 +131,57 @@ namespace MnistDigits
             this.rateLabel.TabIndex = 1;
             this.rateLabel.Text = "Rate";
             // 
-            // textBox1
+            // alphaTextBox
             // 
             this.alphaTextBox.Location = new System.Drawing.Point(63, 30);
-            this.alphaTextBox.Name = "textBox1";
+            this.alphaTextBox.Name = "alphaTextBox";
             this.alphaTextBox.Size = new System.Drawing.Size(100, 20);
             this.alphaTextBox.TabIndex = 0;
             this.alphaTextBox.TextChanged += new System.EventHandler(this.alphaTextBox_TextChanged);
             // 
             // gradientDescentPlotView
             // 
-            this.gradientDescentPlotView.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.gradientDescentPlotView.Location = new System.Drawing.Point(3, 103);
+            this.gradientDescentPlotView.Location = new System.Drawing.Point(3, 131);
             this.gradientDescentPlotView.Name = "gradientDescentPlotView";
             this.gradientDescentPlotView.PanCursor = System.Windows.Forms.Cursors.Hand;
-            this.gradientDescentPlotView.Size = new System.Drawing.Size(1174, 400);
+            this.gradientDescentPlotView.Size = new System.Drawing.Size(782, 372);
             this.gradientDescentPlotView.TabIndex = 0;
             this.gradientDescentPlotView.Text = "plot1";
             this.gradientDescentPlotView.ZoomHorizontalCursor = System.Windows.Forms.Cursors.SizeWE;
             this.gradientDescentPlotView.ZoomRectangleCursor = System.Windows.Forms.Cursors.SizeNWSE;
             this.gradientDescentPlotView.ZoomVerticalCursor = System.Windows.Forms.Cursors.SizeNS;
             // 
+            // predictButton
+            // 
+            this.predictButton.Location = new System.Drawing.Point(803, 26);
+            this.predictButton.Name = "predictButton";
+            this.predictButton.Size = new System.Drawing.Size(75, 23);
+            this.predictButton.TabIndex = 10;
+            this.predictButton.Text = "Predict";
+            this.predictButton.UseVisualStyleBackColor = true;
+            this.predictButton.Click += new System.EventHandler(this.predictButton_Click);
+            // 
+            // predictionResultsListBox
+            // 
+            this.predictionResultsListBox.FormattingEnabled = true;
+            this.predictionResultsListBox.Location = new System.Drawing.Point(803, 131);
+            this.predictionResultsListBox.Name = "predictionResultsListBox";
+            this.predictionResultsListBox.Size = new System.Drawing.Size(371, 368);
+            this.predictionResultsListBox.TabIndex = 11;
+            // 
+            // predictionsOutcomelabel
+            // 
+            this.predictionsOutcomelabel.AutoSize = true;
+            this.predictionsOutcomelabel.Location = new System.Drawing.Point(885, 32);
+            this.predictionsOutcomelabel.Name = "predictionsOutcomelabel";
+            this.predictionsOutcomelabel.Size = new System.Drawing.Size(0, 13);
+            this.predictionsOutcomelabel.TabIndex = 12;
+            // 
             // LogisticRegressionForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1204, 530);
+            this.ClientSize = new System.Drawing.Size(1228, 530);
             this.Controls.Add(this.groupBox1);
             this.Name = "LogisticRegressionForm";
             this.Text = "MNIST Demo";
@@ -172,6 +204,9 @@ namespace MnistDigits
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button stepButton;
         private PlotView gradientDescentPlotView;
+        private System.Windows.Forms.Button predictButton;
+        private System.Windows.Forms.ListBox predictionResultsListBox;
+        private System.Windows.Forms.Label predictionsOutcomelabel;
     }
 }
 

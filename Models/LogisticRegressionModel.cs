@@ -71,7 +71,7 @@ namespace MnistDigits.Models
         }
 
         /// <summary>
-        /// Returns a vector of length 10 where each value is the cost for a digit from 0 to 9.
+        /// Returns a vector of length 10 where each element represents the dataset's cost for a digit from 0 to 9.
         /// </summary>
         /// <returns></returns>
         public Vec CostsVector()
@@ -102,6 +102,11 @@ namespace MnistDigits.Models
             return grads;
         }
 
+        /// <summary>
+        /// Returns a vector containing the predictions for the supplied samples matrix (the values have to be interpreted as digits)
+        /// </summary>
+        /// <param name="samples"></param>
+        /// <returns></returns>
         public Vec Predict(Mat samples)
         {
             return IndicesForMax(_X.Multiply(_thetas).Map(_sigmoid));
@@ -124,7 +129,12 @@ namespace MnistDigits.Models
                 maxima = maxima.Map2((a, b) => Math.Max(a, b), predictions.Column(index));
             }
 
-            return null;
+            return maxIndices;
+        }
+
+        public void ResetHypothesis()
+        {
+            _thetas = _M.Random(_X.ColumnCount, _Y.ColumnCount);
         }
 
     }

@@ -16,7 +16,7 @@ namespace MnistDigits.Models
         private static int bpp = 8; //  grayscale
 
         private Vec _intFeatures;
-        private int _label;
+        private int _target;
         private Bitmap _bitmap = null;
 
         public MnistSample(Vec row)
@@ -27,17 +27,17 @@ namespace MnistDigits.Models
                 throw new ArgumentException(message, nameof(row));
             }
 
-            _label = (int)row[0];
+            _target = (int)row[0];
 
             _intFeatures = row.SubVector(1, row.Count - 1);
 
         }
 
-        public string Label
+        public int Target
         {
             get
             {
-                return string.Format("{0}", _label);
+                return _target;
             }
         }
 
