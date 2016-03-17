@@ -120,16 +120,7 @@ namespace MnistDigits.Models
 
         private Vec IndicesForMax(Mat predictions)
         {
-            Vec maxima = predictions.Column(0);
-            Vec maxIndices = _V.Dense(predictions.RowCount);
-            for (int index = 1; index < 10; index++)
-            {
-                Vec isGreater = maxima.Map2((a, b) => b > a ? 1 : 0, predictions.Column(index));
-                maxIndices = isGreater.Map2((i, j) => (int)i == 1 ? index : j, maxIndices);
-                maxima = maxima.Map2((a, b) => Math.Max(a, b), predictions.Column(index));
-            }
-
-            return maxIndices;
+            return _V.Dense(predictions.EnumerateRows().Select(v => (double)v.AbsoluteMaximumIndex()).ToArray());
         }
 
         public void ResetHypothesis()

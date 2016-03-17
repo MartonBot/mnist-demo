@@ -58,8 +58,7 @@ namespace MnistDigits
         private void stepButton_Click(object sender, EventArgs e)
         {
             _model.GradientDescentStep();
-            _gradientDescentSeries.Add(_model.CostsVector().Average());
-            gradientDescentPlotView.InvalidatePlot(true);
+            EvaluateCostAndPlot();
             ReevaluatePredictions();
         }
 
@@ -76,6 +75,8 @@ namespace MnistDigits
         private void resetButton_Click(object sender, EventArgs e)
         {
             _model.ResetHypothesis();
+            EvaluateCostAndPlot();
+            ReevaluatePredictions();
         }
 
         private void ReevaluatePredictions()
@@ -95,6 +96,12 @@ namespace MnistDigits
             int matches = actualVsPredicted.Where(t => (t.Item1 == t.Item2)).Count();
 
             predictionsOutcomelabel.Text = string.Format("{0} matches out of {1} samples", matches, actual.Count);
+        }
+
+        private void EvaluateCostAndPlot()
+        {
+            _gradientDescentSeries.Add(_model.CostsVector().Average());
+            gradientDescentPlotView.InvalidatePlot(true);
         }
     }
 }
